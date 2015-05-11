@@ -1,0 +1,42 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 17
+    buildToolsVersion "20.0.0"
+
+    defaultConfig {
+        applicationId "com.example.liveangel.test"
+        minSdkVersion 8
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+    }
+//    signingConfigs {
+//        release{
+//            storeFile file("gradle.keystore")
+//            storePassword "gradle"
+//            keyAlias "gradle"
+//            keyPassword "gradle"
+//        }
+//    }
+    buildTypes {
+        release {
+            minifyEnabled false
+//            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.release
+        }
+    }
+//    productFlavors {
+//        playstore {
+//            applicationId 'cc.bb.aa.gradle_build_variants.playstore'
+//        }
+//
+//        productflavorsnochange {}
+//    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:21.0.3'
+}
