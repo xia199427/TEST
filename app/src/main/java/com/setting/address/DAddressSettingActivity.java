@@ -28,9 +28,7 @@ public class DAddressSettingActivity extends ActionBarActivity {
     private EditText edit_street;
     private EditText edit_building;
     private EditText edit_room;
-    private Button btn;
 
-    private String requestIP = "http://10.0.3.2:8080/LazyGift/MyAddrSet";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +36,7 @@ public class DAddressSettingActivity extends ActionBarActivity {
         edit_street = (EditText) this.findViewById(R.id.edit_street);
         edit_building = (EditText) this.findViewById(R.id.edit_building);
         edit_room = (EditText) this.findViewById(R.id.edit_room);
-        btn = (Button) this.findViewById(R.id.button_submit_DAddress);
+        Button btn = (Button) this.findViewById(R.id.button_submit_DAddress);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,11 +84,13 @@ public class DAddressSettingActivity extends ActionBarActivity {
 
         private void submitUserAddr(String id, String street,String building,String room){
             //text.setText(id + ": " + addr);
+            String requestIP = "http://10.0.3.2:8080/LazyGift/MyAddrSet";
             HttpClient client = new DefaultHttpClient();
             HttpPost httpRequest = new HttpPost(requestIP);
             //String url = requestIP + "?ID="+ id + "&ADDRESS="+addr;
             //HttpGet getRequest = new HttpGet(url);
-            ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
+            ArrayList<NameValuePair> params;
+            params = new ArrayList<>();
             params.add(new BasicNameValuePair("ID",id));
             params.add(new BasicNameValuePair("STREET",street));
             params.add(new BasicNameValuePair("BUILDING", building));
